@@ -1,0 +1,6 @@
+appointment\AppointmentService.class
+contact\ContactService.class
+task\Task.class
+appointment\Appointment.class
+task\TaskService.class
+contact\Contact.class

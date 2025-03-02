@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Appointment.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mobile-service-app</a> &gt; <a href="index.source.html" class="el_package">appointment</a> &gt; <span class="el_source">Appointment.java</span></div><h1>Appointment.java</h1><pre class="source lang-java linenums">package appointment;
+
+import java.util.Date;
+
+public class Appointment {
+    private final String appointmentId;  // Unique, not null, max 10 chars, not updatable
+    private Date appointmentDate;        // Not null, not in past
+    private String description;          // Not null, max 50 chars
+    
+<span class="fc" id="L10">    public Appointment(String appointmentId, Date appointmentDate, String description) {</span>
+<span class="fc" id="L11">        validateAppointmentId(appointmentId);</span>
+<span class="fc" id="L12">        validateAppointmentDate(appointmentDate);</span>
+<span class="fc" id="L13">        validateDescription(description);</span>
+        
+<span class="fc" id="L15">        this.appointmentId = appointmentId;</span>
+<span class="fc" id="L16">        this.appointmentDate = appointmentDate;</span>
+<span class="fc" id="L17">        this.description = description;</span>
+<span class="fc" id="L18">    }</span>
+    
+    private void validateAppointmentId(String appointmentId) {
+<span class="fc bfc" id="L21" title="All 4 branches covered.">        if (appointmentId == null || appointmentId.length() &gt; 10) {</span>
+<span class="fc" id="L22">            throw new IllegalArgumentException(&quot;Appointment ID must not be null and cannot exceed 10 characters&quot;);</span>
+        }
+<span class="fc" id="L24">    }</span>
+    
+    private void validateAppointmentDate(Date appointmentDate) {
+<span class="fc bfc" id="L27" title="All 4 branches covered.">        if (appointmentDate == null || appointmentDate.before(new Date())) {</span>
+<span class="fc" id="L28">            throw new IllegalArgumentException(&quot;Appointment date must not be null and cannot be in the past&quot;);</span>
+        }
+<span class="fc" id="L30">    }</span>
+    
+    private void validateDescription(String description) {
+<span class="fc bfc" id="L33" title="All 4 branches covered.">        if (description == null || description.length() &gt; 50) {</span>
+<span class="fc" id="L34">            throw new IllegalArgumentException(&quot;Description must not be null and cannot exceed 50 characters&quot;);</span>
+        }
+<span class="fc" id="L36">    }</span>
+    
+    // Getters
+    public String getAppointmentId() {
+<span class="fc" id="L40">        return appointmentId;</span>
+    }
+    
+    public Date getAppointmentDate() {
+<span class="fc" id="L44">        return appointmentDate;</span>
+    }
+    
+    public String getDescription() {
+<span class="fc" id="L48">        return description;</span>
+    }
+    
+    // Setters (except for appointmentId which is final)
+    public void setAppointmentDate(Date appointmentDate) {
+<span class="nc" id="L53">        validateAppointmentDate(appointmentDate);</span>
+<span class="nc" id="L54">        this.appointmentDate = appointmentDate;</span>
+<span class="nc" id="L55">    }</span>
+    
+    public void setDescription(String description) {
+<span class="nc" id="L58">        validateDescription(description);</span>
+<span class="nc" id="L59">        this.description = description;</span>
+<span class="nc" id="L60">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

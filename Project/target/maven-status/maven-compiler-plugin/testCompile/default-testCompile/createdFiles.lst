@@ -1,0 +1,6 @@
+appointment\AppointmentTest.class
+task\TaskServiceTest.class
+task\TaskTest.class
+contact\ContactTest.class
+contact\ContactServiceTest.class
+appointment\AppointmentServiceTest.class

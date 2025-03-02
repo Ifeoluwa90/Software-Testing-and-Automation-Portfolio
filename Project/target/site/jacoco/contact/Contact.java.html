@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Contact.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mobile-service-app</a> &gt; <a href="index.source.html" class="el_package">contact</a> &gt; <span class="el_source">Contact.java</span></div><h1>Contact.java</h1><pre class="source lang-java linenums">package contact;
+public class Contact {
+    private final String contactId;
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private String address;
+
+<span class="fc" id="L9">    public Contact(String contactId, String firstName, String lastName, String phone, String address) {</span>
+        // Validate all fields
+<span class="fc" id="L11">        validateContactId(contactId);</span>
+<span class="fc" id="L12">        validateFirstName(firstName);</span>
+<span class="fc" id="L13">        validateLastName(lastName);</span>
+<span class="fc" id="L14">        validatePhone(phone);</span>
+<span class="fc" id="L15">        validateAddress(address);</span>
+
+        // Set the fields
+<span class="fc" id="L18">        this.contactId = contactId;</span>
+<span class="fc" id="L19">        this.firstName = firstName;</span>
+<span class="fc" id="L20">        this.lastName = lastName;</span>
+<span class="fc" id="L21">        this.phone = phone;</span>
+<span class="fc" id="L22">        this.address = address;</span>
+<span class="fc" id="L23">    }</span>
+
+    // Getters
+<span class="fc" id="L26">    public String getContactId() { return contactId; }</span>
+<span class="fc" id="L27">    public String getFirstName() { return firstName; }</span>
+<span class="fc" id="L28">    public String getLastName() { return lastName; }</span>
+<span class="fc" id="L29">    public String getPhone() { return phone; }</span>
+<span class="fc" id="L30">    public String getAddress() { return address; }</span>
+
+    // Setters with validation
+    public void setFirstName(String firstName) {
+<span class="fc" id="L34">        validateFirstName(firstName);</span>
+<span class="fc" id="L35">        this.firstName = firstName;</span>
+<span class="fc" id="L36">    }</span>
+
+    public void setLastName(String lastName) {
+<span class="fc" id="L39">        validateLastName(lastName);</span>
+<span class="fc" id="L40">        this.lastName = lastName;</span>
+<span class="fc" id="L41">    }</span>
+
+    public void setPhone(String phone) {
+<span class="fc" id="L44">        validatePhone(phone);</span>
+<span class="fc" id="L45">        this.phone = phone;</span>
+<span class="fc" id="L46">    }</span>
+
+    public void setAddress(String address) {
+<span class="fc" id="L49">        validateAddress(address);</span>
+<span class="fc" id="L50">        this.address = address;</span>
+<span class="fc" id="L51">    }</span>
+
+    // Validation methods
+    private void validateContactId(String contactId) {
+<span class="pc bpc" id="L55" title="1 of 4 branches missed.">        if (contactId == null || contactId.trim().isEmpty()) {</span>
+<span class="fc" id="L56">            throw new IllegalArgumentException(&quot;Contact ID cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (contactId.length() &gt; 10) {</span>
+<span class="fc" id="L59">            throw new IllegalArgumentException(&quot;Contact ID cannot be longer than 10 characters&quot;);</span>
+        }
+<span class="fc" id="L61">    }</span>
+
+    private void validateFirstName(String firstName) {
+<span class="pc bpc" id="L64" title="1 of 4 branches missed.">        if (firstName == null || firstName.trim().isEmpty()) {</span>
+<span class="fc" id="L65">            throw new IllegalArgumentException(&quot;First name cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (firstName.length() &gt; 10) {</span>
+<span class="fc" id="L68">            throw new IllegalArgumentException(&quot;First name cannot be longer than 10 characters&quot;);</span>
+        }
+<span class="fc" id="L70">    }</span>
+
+    private void validateLastName(String lastName) {
+<span class="pc bpc" id="L73" title="1 of 4 branches missed.">        if (lastName == null || lastName.trim().isEmpty()) {</span>
+<span class="fc" id="L74">            throw new IllegalArgumentException(&quot;Last name cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if (lastName.length() &gt; 10) {</span>
+<span class="fc" id="L77">            throw new IllegalArgumentException(&quot;Last name cannot be longer than 10 characters&quot;);</span>
+        }
+<span class="fc" id="L79">    }</span>
+
+    private void validatePhone(String phone) {
+<span class="pc bpc" id="L82" title="1 of 4 branches missed.">        if (phone == null || phone.trim().isEmpty()) {</span>
+<span class="fc" id="L83">            throw new IllegalArgumentException(&quot;Phone cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if (!phone.matches(&quot;\\d{10}&quot;)) {</span>
+<span class="fc" id="L86">            throw new IllegalArgumentException(&quot;Phone must be exactly 10 digits&quot;);</span>
+        }
+<span class="fc" id="L88">    }</span>
+
+    private void validateAddress(String address) {
+<span class="pc bpc" id="L91" title="1 of 4 branches missed.">        if (address == null || address.trim().isEmpty()) {</span>
+<span class="fc" id="L92">            throw new IllegalArgumentException(&quot;Address cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        if (address.length() &gt; 30) {</span>
+<span class="fc" id="L95">            throw new IllegalArgumentException(&quot;Address cannot be longer than 30 characters&quot;);</span>
+        }
+<span class="fc" id="L97">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
